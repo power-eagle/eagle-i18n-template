@@ -1,5 +1,5 @@
 {
-  "source": "https://github.com/ZackaryW/eagle-template.git",
+  "source": "https://github.com/power-eagle/eagle-template.git",
   "branch": "main",
   "checkIntervalHours": 24,
   "workflow": ".github/workflows/package-plugin.yml",
