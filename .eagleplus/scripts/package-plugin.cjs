@@ -132,7 +132,7 @@ function shouldIncludeFile(filePath, includePatterns) {
 
 function resolveIncludedFiles(repoRoot, pkgRules) {
   const includePatterns = Array.isArray(pkgRules.includes) ? pkgRules.includes : [];
-  const ignorePatterns = ['.git/**', 'dist/**', 'node_modules/**', ...(pkgRules.ignore || [])];
+  const ignorePatterns = ['.git/**', '**/*.eagleplugin', ...(pkgRules.ignore || [])];
   const repoFiles = walkFiles(repoRoot);
 
   return repoFiles
