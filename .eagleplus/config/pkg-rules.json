@@ -1,0 +1,10 @@
+{
+  "includes": [
+    "src/**",
+    "assets/**"
+  ],
+  "ignore": [
+    "dist/**",
+    "node_modules/**"
+  ]
+}

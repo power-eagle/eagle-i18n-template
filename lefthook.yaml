@@ -1,0 +1,4 @@
+pre-commit:
+  commands:
+    doctor:
+      run: node .eagleplus/scripts/doctor.cjs

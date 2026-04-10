@@ -1,0 +1,11 @@
+{
+  "source": "https://github.com/ZackaryW/eagle-template.git",
+  "branch": "main",
+  "checkIntervalHours": 24,
+  "workflow": ".github/workflows/package-plugin.yml",
+  "syncLefthook": true,
+  "protected": [
+    "README.md",
+    "LICENSE"
+  ]
+}

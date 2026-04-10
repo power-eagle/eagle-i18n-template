@@ -1,0 +1,15 @@
+{
+  "id": "000-replace-this-id",
+  "version": "0.0.0",
+  "platform": "all",
+  "arch": "all",
+  "name": "replace this id",
+  "logo": "/logo.png",
+  "keywords": [],
+  "devTools": true,
+  "fallbackLanguage": "en",
+  "languages": [
+      "en"
+  ],
+  "main" : "helloworld.html"
+}
