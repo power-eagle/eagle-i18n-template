@@ -11,5 +11,5 @@
   "languages": [
       "en"
   ],
-  "main" : "helloworld.html"
+  "main" : "src/helloworld.html"
 }
