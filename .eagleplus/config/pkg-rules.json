@@ -1,10 +1,12 @@
 {
   "includes": [
     "src/**",
-    "assets/**"
+    "assets/**",
+    "_locales/**"
   ],
   "ignore": [
     "dist/**",
     "node_modules/**"
-  ]
+  ],
+  "i18n" : true
 }

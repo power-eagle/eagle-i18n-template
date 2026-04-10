@@ -7,5 +7,9 @@
   "logo": "/logo.png",
   "keywords": [],
   "devTools": true,
-  "main" : "src/helloworld.html"
+  "main" : "src/helloworld.html",
+  "fallbackLanguage": "en",
+  "languages": [
+      "en"
+  ]
 }
