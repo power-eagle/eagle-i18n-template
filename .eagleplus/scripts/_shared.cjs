@@ -23,71 +23,8 @@ function ensureFileExists(filePath, description) {
   }
 }
 
-function escapeRegex(value) {
-  return value.replace(/[|\\{}()[\]^$+?.]/g, '\\$&');
-}
-
-function matchesSegment(targetSegment, patternSegment) {
-  const regex = new RegExp(`^${escapeRegex(patternSegment).replace(/\*/g, '[^/]*')}$`);
-  return regex.test(targetSegment);
-}
-
 function matchesGlob(targetPath, pattern) {
-  const normalizedTarget = normalizePath(targetPath).replace(/^\.\//, '').replace(/^\//, '');
-  const normalizedPattern = normalizePath(pattern).replace(/^\.\//, '').replace(/^\//, '');
-
-  if (normalizedPattern === '') {
-    return normalizedTarget === '';
-  }
-
-  const targetSegments = normalizedTarget.split('/').filter(Boolean);
-  const patternSegments = normalizedPattern.split('/').filter(Boolean);
-  const memo = new Map();
-
-  function matchAt(targetIndex, patternIndex) {
-    const memoKey = `${targetIndex}:${patternIndex}`;
-    if (memo.has(memoKey)) {
-      return memo.get(memoKey);
-    }
-
-    if (patternIndex === patternSegments.length) {
-      const isMatch = targetIndex === targetSegments.length;
-      memo.set(memoKey, isMatch);
-      return isMatch;
-    }
-
-    const patternSegment = patternSegments[patternIndex];
-    if (patternSegment === '**') {
-      if (patternIndex === patternSegments.length - 1) {
-        memo.set(memoKey, true);
-        return true;
-      }
-
-      for (let nextTargetIndex = targetIndex; nextTargetIndex <= targetSegments.length; nextTargetIndex += 1) {
-        if (matchAt(nextTargetIndex, patternIndex + 1)) {
-          memo.set(memoKey, true);
-          return true;
-        }
-      }
-
-      memo.set(memoKey, false);
-      return false;
-    }
-
-    if (targetIndex >= targetSegments.length) {
-      memo.set(memoKey, false);
-      return false;
-    }
-
-    const isMatch =
-      matchesSegment(targetSegments[targetIndex], patternSegment) &&
-      matchAt(targetIndex + 1, patternIndex + 1);
-
-    memo.set(memoKey, isMatch);
-    return isMatch;
-  }
-
-  return matchAt(0, 0);
+  return path.matchesGlob(targetPath, pattern);
 }
 
 function matchesAny(targetPath, patterns) {
